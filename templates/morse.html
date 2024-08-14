@@ -1,0 +1,137 @@
+{% include "header.html" %}
+  <body id="page-top">
+    {% include "nav&masthead.html" %}
+
+    <!-- Portfolio Section-->
+    <section class="page-section portfolio" id="portfolio">
+      <div class="container">
+        <!-- Portfolio Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0"> Morse Code Program</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <!-- Portfolio Grid Items-->
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-7">
+                    <textarea
+                      id="inputText"
+                      class="form-control mb-4"
+                      rows="4"
+                      placeholder="Enter text or Morse code here..."
+                    >{{ input_text }}</textarea>
+                    <textarea
+                      id="outputText"
+                      class="form-control"
+                      rows="4"
+                      placeholder="Your translation will appear here..."
+                    >{{ output_text }}</textarea>
+                    <br>
+                    <div class="text-center">
+                        <button id="playMorseButton" class="btn btn-primary">Play Morse Code</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section-->
+    <section class="page-section bg-primary text-white mb-0" id="about">
+      <div class="container">
+        <!-- About Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-white">
+          About
+        </h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+          <div class="divider-custom-line"></div>
+          <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+          <div class="divider-custom-line"></div>
+        </div>
+        <!-- About Section Content-->
+        <div class="row">
+          <div class="col-lg-4 ms-auto">
+            <p class="lead">
+              Highly motivated and passionate about technology, I am eager to
+              transition my career into the IT world as a self-taught Python and
+              JavaScript programmer.With a solid foundation in biochemistry and
+              a deep understanding of problem-solving,
+            </p>
+          </div>
+          <div class="col-lg-4 me-auto">
+            <p class="lead">
+              I bring a unique perspective to programming. I am dedicated to
+              helping teams achieve their goals and thrive on working with new
+              people, fostering connections, and providing innovative solutions.
+            </p>
+          </div>
+        </div>
+        <!-- About Section Button-->
+        <div class="text-center mt-4">
+          <a
+            class="btn btn-xl btn-outline-light"
+            href="https://startbootstrap.com/theme/freelancer/"
+          >
+            <i class="fas fa-download me-2"></i>
+            See My Code
+          </a>
+        </div>
+      </div>
+    </section>
+
+    {% include "contact.html" %}
+    {% include "footer&copyright.html" %}
+    {% include "modals.html" %}
+
+    <!--Morse Code Handling JS Script -->
+    <script>
+        async function processMorse() {
+            const inputText = document.getElementById('inputText').value;
+            const response = await fetch('/morse-process', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ inputText: inputText })
+            });
+            const result = await response.json();
+            document.getElementById('outputText').innerText = result.outputText;
+        }
+    
+        async function playMorseCode() {
+            const inputText = document.getElementById('inputText').value;
+            const outputText = document.getElementById('outputText').value;
+    
+            const response = await fetch('/play-morse', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    inputText: inputText,
+                    outputText: outputText,
+                }),
+            });
+    
+            const result = await response.json();
+            console.log('Playing Morse Code:', result.status);
+        }
+    
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('inputText').addEventListener('input', processMorse);
+            document.getElementById('playMorseButton').addEventListener('click', playMorseCode);
+        });
+    </script>
+    
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  </body>
+</html>
