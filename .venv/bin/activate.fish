@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/hatim/Desktop/1.Python Project/startbootstrap-freelancer-gh-pages/.venv"
+set -gx VIRTUAL_ENV "/home/hatim/Desktop/1.Python Project/Project Web/.venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

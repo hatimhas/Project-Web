@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/hatim/Desktop/1.Python Project/startbootstrap-freelancer-gh-pages/.venv/bin/python" "$0" "$@"
+'''exec' "/home/hatim/Desktop/1.Python Project/Project Web/.venv/bin/python" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
