@@ -67,7 +67,9 @@ def submit_form():
 
     return redirect(url_for("home"))  
 
-
+@app.route('/tic_toe')
+def tic_toe():
+    return render_template('tic-toe.html', input_text='', output_text='')
 
 
 if __name__ == "__main__":

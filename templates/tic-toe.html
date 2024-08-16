@@ -1,4 +1,29 @@
 {% include "header.html" %}
+  <style>
+    #tictactoeBoard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 5px; 
+      max-width: 300px;
+      margin: 0 auto; 
+  }
+  
+  .tic-tac-toe-cell {
+      width: 100px;  
+      height: 100px;  
+      position: relative; 
+      font-size: 30px; 
+  }
+  
+  .player-X {
+      color: blue;
+  }
+  
+  .player-O {
+      color: red;
+  }
+  
+  </style>
   <body id="page-top">
     {% include "nav&masthead.html" %}
 
@@ -6,7 +31,7 @@
     <section class="page-section portfolio" id="portfolio">
       <div class="container">
         <!-- Portfolio Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0"> Morse Code Program</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0"> Tic Tac Toe Program </h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
           <div class="divider-custom-line"></div>
@@ -15,27 +40,17 @@
         </div>
         <!-- Portfolio Grid Items-->
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-7">
-                    <textarea
-                      id="inputText"
-                      class="form-control mb-4"
-                      rows="4"
-                      placeholder="Enter text or Morse code here..."
-                    >{{ input_text }}</textarea>
-                    <textarea
-                      id="outputText"
-                      class="form-control"
-                      rows="4"
-                      placeholder="Your translation will appear here..."
-                    >{{ output_text }}</textarea>
-                    <br>
-                    <div class="text-center">
-                        <button id="playMorseButton" class="btn btn-primary">Play Morse Code</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+          <div class="row justify-content-center">
+              <div class="col-md-7 text-center">
+                  <h2 id="gameStatus">Player X's Turn</h2>
+                  <div id="tictactoeBoard" class="tic-tac-toe-grid"></div>
+                  <br>
+                  <button id="resetButton" class="btn btn-primary mt-3">Reset Game</button>
+              </div>
+          </div>
+      </div>
+      
+      
       </div>
     </section>
     <!-- About Section-->
@@ -110,9 +125,8 @@
     {% include "footer&copyright.html" %}
     {% include "modals.html" %}
 
-    <!--Morse Code Handling JS Script -->
-    <script src="static/js/morse.js">
-        
+    <!--Tic Tac Toe Handling JS Script -->
+    <script src="static/js/tic-tac-toe.js">
     </script>
     
     <!-- Bootstrap core JS-->
