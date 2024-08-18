@@ -42,10 +42,18 @@
         <div class="container">
           <div class="row justify-content-center">
               <div class="col-md-7 text-center">
-                  <h2 id="gameStatus">Player X's Turn</h2>
+                  <label for="modeSelector">Choose Mode:</label>
+                  <select id="modeSelector" class="form-control" style="text-align: center; width: 300px; margin: 0 auto;">
+                      <option value="chooseMode">Choose Mode</option>
+                      <option value="2player">2 Player</option>
+                      <option value="aiEasy">AI (Easy)</option>
+                      <option value="aiHard">AI (Hard)</option>
+                  </select>
+                  <h2 id="gameStatus">Choose a Game Mode</h2>
                   <div id="tictactoeBoard" class="tic-tac-toe-grid"></div>
                   <br>
                   <button id="resetButton" class="btn btn-primary mt-3">Reset Game</button>
+                  
               </div>
           </div>
       </div>
@@ -69,41 +77,30 @@
         <!-- About Section Content-->
         <div class="row">
           <div class="col-lg-4 ms-auto">
-            <p class="lead">
+            <p class="lead" >
               <ul>
-                <li><strong>Designed</strong> and implemented a web-based Morse code encoder/decoder using Flask.</li>
-                <li><strong>Developed</strong> key routes for handling text input, processing Morse code, and playing audio.</li>
-                <li><strong>Created</strong> a Python class to manage encoding, decoding, and audio playback, utilizing the pygame library.</li>
-                <li><strong>Integrated</strong> JavaScript to dynamically process user input and interact with server-side logic, ensuring seamless user experience.</li>
-                <li><strong>Python</strong> handles the backend processing and logic, while JavaScript makes the frontend interactive and user-friendly.</li>
-              </ul>
+                <li><strong>Designed</strong> and implemented a dynamic Tic Tac Toe game using HTML, CSS, and JavaScript.</li>
+                <li><strong>Developed</strong> the game grid by dynamically generating the cells and attaching event listeners for user interactions.</li>
+                <li><strong>Created</strong> a JavaScript function to handle player moves, update the game state, and check for winning combinations.</li>
+                <li><strong>Integrated</strong> logic to switch players, track the game status, and display the current player's turn or the game outcome.</li>
+                <li><strong>Implemented</strong> a reset functionality to allow the game to be restarted, ensuring a seamless user experience.</li>
+            </ul>
+            
             </p>
           </div>
           <div class="col-lg-4 me-auto">
             <p class="lead">
               <ul>
-                <li><strong>HTML</strong>: Structuring web pages</li>
-                <li><strong>CSS</strong> (Bootstrap): Styling and responsive design</li>
-                <li><strong>JavaScript</strong> (AJAX, Event Handling, async/await): Dynamic interactions and asynchronous communication</li>
-                <li><strong>Python</strong>: Class Design, Audio Handling with pygame, Morse Code Processing</li>
-                <li><strong>Flask</strong>: Web framework for routing and template rendering</li>
-                <li><strong>SQLAlchemy</strong>: ORM for database management</li>
-                <li><strong>PostgreSQL</strong>: Relational database for storing data</li>
-              </ul>
+                <li><strong>HTML</strong>: Structuring the game board and interface elements</li>
+                <li><strong>CSS</strong>: Styling the Tic Tac Toe grid, ensuring consistent layout and responsive design</li>
+                <li><strong>JavaScript</strong>: Event handling, game logic, and dynamic updates to the game state</li>
+                <li><strong>DOM Manipulation</strong>: Creating and managing game cells dynamically, updating the game status</li>
+                <li><strong>Bootstrap</strong>: Ensuring the layout is responsive across different screen sizes</li>
+            </ul>
+            
             </p>
           </div>
-          <div class="col-lg-4 me-auto">
-            <p class="lead">
-              <ul>
-                <li><strong>JSON</strong>: Data handling and communication</li>
-                <li><strong>Jinja2</strong>: Templating engine for dynamic HTML rendering</li>
-                <li><strong>GitHub</strong>: Version control and collaboration</li>
-                <li><strong>Database</strong> Models: Defining and managing data schema with SQLAlchemy</li>
-                <li><strong>Context Management</strong>: Using Flask app context for database operations</li>
-                <li><strong>Navigation Handling</strong>: Managing redirects and form submissions</li>
-              </ul>
-            </p>
-          </div>
+          
         </div>
         
         
