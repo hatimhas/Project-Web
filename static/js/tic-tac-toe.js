@@ -4,22 +4,14 @@ document.addEventListener("DOMContentLoaded", function() {
     const gameStatus = document.getElementById("gameStatus");
     let currentPlayer = "X";
     let boardState = [];
-    let gameActive = false;
-
+   
     // Disable the board on page load
     disableBoard();
 
-    function startGame() {
-        gameActive = true;
-
-        if (gameActive) {
-            modeSelector.disabled = true;
-        }
-    }
+    
 
     modeSelector.addEventListener("change", function() {
         const selectedMode = modeSelector.value;
-        startGame();
         updateGameMode(selectedMode);
     });
 
@@ -43,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (currentPlayer === 'O') {
                 makeHardAiMove()
             }
-            
         }
     }
 
@@ -71,18 +62,19 @@ document.addEventListener("DOMContentLoaded", function() {
         cell.textContent = currentPlayer;
         cell.classList.add(`player-${currentPlayer}`);
 
-        if (currentPlayer === 'X') {
-            modeSelector.disabled = true;
+        // Check if 'X' is on the board
+        if (boardState.includes('X')) {
+            modeSelector.disabled = true; // Disable mode selector
         }
 
         if (checkWinner()) {
-            document.getElementById("gameStatus").textContent = `Player ${currentPlayer} Wins!`;
+            gameStatus.textContent = `Player ${currentPlayer} Wins!`;
             disableBoard();
         } else if (boardState.every(cell => cell !== null)) {
-            document.getElementById("gameStatus").textContent = "It's a Draw!";
+            gameStatus.textContent = "It's a Draw!";
         } else {
             currentPlayer = currentPlayer === "X" ? "O" : "X";
-            document.getElementById("gameStatus").textContent = `Player ${currentPlayer}'s Turn`;
+            gameStatus.textContent = `Player ${currentPlayer}'s Turn`;
             
             if (currentPlayer === 'O' && modeSelector.value === 'aiEasy') {
                 setTimeout(makeAiMove, 500);  // AI makes its move after a short delay
@@ -227,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function() {
         currentPlayer = "X";
         modeSelector.disabled = false;
         
-        // Re-enable the board if a valid mode is selected
+        // Re-enable the board if a valid mode is selected or if 'X' is not on the board
         const selectedMode = modeSelector.value;
         if (selectedMode !== 'chooseMode') {
             updateGameMode(selectedMode);
@@ -235,5 +227,4 @@ document.addEventListener("DOMContentLoaded", function() {
             disableBoard(); // Keep the board disabled if no mode is selected
         }
     });
-    
 });
